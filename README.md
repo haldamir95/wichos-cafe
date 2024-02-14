@@ -23,6 +23,18 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
     
 
 ## Dockerize
+0. Installing docker
+    - set up the `apt` repository [like this](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+    - install the latest version
+        ```bash
+        sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+        ```
+    - check if docker engine is working
+        ```bash
+        sudo docker run hello-world
+        ```
+    - create a group in linux to don't have to use `sudo` everytime. Follow the [post-instalation steps](https://docs.docker.com/engine/install/linux-postinstall/)
+    
 1. Create the image building the container
     ```bash
     docker build -t wichos-cafe .
