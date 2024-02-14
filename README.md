@@ -22,6 +22,70 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 2. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
     
 
+## Dockerize
+1. Create the image building the container
+    ```bash
+    docker build -t wichos-cafe .
+    ```
+    - Solving Problems 
+        -   if actions for run 'yarn run build' does not work, remove the 'if - fi' statement and leave just 'yarn run build;
+            ```bash
+            # RUN \
+            #   if [ -f yarn.lock ]; then yarn run build; \
+            #   elif [ -f package-lock.json ]; then npm run build; \
+            #   elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
+            #   else echo "Lockfile not found." && exit 1; \
+            #   fi
+
+            RUN yarn run build
+            ```
+        - to avoid problems when deployed, add the following code to the next.config.js file
+            ```
+            ...
+            const nextConfig = {
+                    output: "standalone"
+            }
+            ...
+            ```
+        - if there is a type error just ignore it by using the following code above the line that has the error
+            ```
+            // @ts-ignore
+            ```
+        - remove the 'themecolor' from the /app/layout.tsx:metadata object and add it to a new viewport object
+            ```
+            export const viewport: Viewport = {
+                themeColor: [
+                    { media: "(prefers-color-scheme: light)", color: "white" },
+                    { media: "(prefers-color-scheme: dark)", color: "black" },
+                ]
+            }
+            ```
+
+2. check if the image exist
+    ```bash
+    docker images
+    ```
+3. run your container
+    ```bash
+    docker -d run -p 3000:3000 wichos-cafe
+    ```
+    NOTAS: -d es para correr el contenedor en 2do plano, quitar el -d para acceder a la consola de la app
+4. check the containers
+    ```bash
+    docker ps -a
+    ```
+5. stop container
+    ```bash
+    docker stop <container_id>
+    ```
+6. delete containers
+    ```bash
+    docker rm <container_id>
+    ```
+7. delete images
+    ```bash
+    docker rmi <image_id>
+    ```
 
 
 

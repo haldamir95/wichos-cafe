@@ -27,7 +27,7 @@ export const Navbar = () => {
                             alt="NextUI hero Image"
                             src={logoImage.src}
                         />
-                        <p className="font-bold text-inherit">Wicho's Cafe</p>
+                        <p className="font-bold text-inherit">Wichoo&apos;s Cafe</p>
                     </NextLink>
                 </NavbarBrand>
                 <ul className="hidden lg:flex gap-4 justify-start ml-2">
