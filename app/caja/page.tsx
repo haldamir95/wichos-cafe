@@ -1,9 +1,12 @@
-import { title } from "@/components/primitives";
+import { OrderMenu } from "@/components/OrderMenu";
+import { ProductsTable } from "@/components/ProductsTable";
+
 
 export default function CajaPage() {
 	return (
-		<div>
-			<h1 className={title()}>Caja</h1>
-		</div>
+		<>
+			<OrderMenu/>
+            <ProductsTable/>
+		</>
 	);
 }
