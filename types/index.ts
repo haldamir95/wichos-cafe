@@ -7,10 +7,13 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 export type Order = {
     drink?: string,
     complement?: string,
-    type?: 'Fuerte'|'Suave'|'Normal',
+    type?: string,
     sugar_type?: string,
-    sugar_qty?:number,
-    size?: 'Normal'|'Grande'|'ICE'
+    sugar_qty?:string,
+    size?: string,
+
+    chai?:string,
+    infusion?:string,
 }
 
 export type OrderRow = {
