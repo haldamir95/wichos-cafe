@@ -3,6 +3,7 @@ import { useState } from "react";
 import { OrderMenu } from "@/components/OrderMenu";
 import { ProductsTable } from "@/components/ProductsTable";
 import { Order } from "@/types";
+import { areAllValuesEmpty } from "@/utils";
 
 
 const CajaPage = () => {
@@ -10,6 +11,8 @@ const CajaPage = () => {
     const updateOrder = (updatedOrder:Order) => {
         setNewOrder({ ...newOrder, ...updatedOrder });
     };
+    
+    
 
 	return (
 		<>

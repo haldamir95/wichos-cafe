@@ -6,7 +6,7 @@ interface OrderListState{
     orderList: Order[]
 }
 const initialState:OrderListState ={
-    orderList: [{drink:'caca'}]
+    orderList: []
 }
 
 const orderListSlice = createSlice({

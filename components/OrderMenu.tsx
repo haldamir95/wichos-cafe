@@ -1,10 +1,11 @@
 'use client'
 import { FC } from "react";
-import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider"
 import { Button } from "@nextui-org/button"
 import { Order } from "@/types";
+import { addOrder } from "@/store/slices/ordersList";
 
 interface OrderMenuProps {
     newOrder: Order;
@@ -12,6 +13,7 @@ interface OrderMenuProps {
 }
 
 export const OrderMenu: FC<OrderMenuProps> = ({newOrder, updateOrder}) => {
+    const dispatch = useDispatch();
     const {drink, complement, type, sugar_qty, sugar_type, size, chai, infusion} = newOrder
     const deleteOrder = () => {
         updateOrder({
@@ -24,6 +26,11 @@ export const OrderMenu: FC<OrderMenuProps> = ({newOrder, updateOrder}) => {
             chai:''
         })
     }
+    const setNewOrder = (newOrder:Order) => (event: any)  => {
+        dispatch(addOrder(newOrder));
+        deleteOrder();
+    }
+
     return (
         <Card className="max-w-[400px]">
             <CardHeader>
@@ -54,7 +61,7 @@ export const OrderMenu: FC<OrderMenuProps> = ({newOrder, updateOrder}) => {
             <Divider />
             <CardFooter>
                 <div className="flex flex-wrap gap-4 items-center">
-                    <Button color="success">
+                    <Button color="success" onPress={setNewOrder(newOrder)}>
                         Ordenar
                     </Button>
 

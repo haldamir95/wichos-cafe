@@ -1,18 +1,16 @@
 'use client'
 import { FC } from "react";
 import { Order } from "@/types";
-
-
-interface OrdersTableProps {
-    orderList: Array<Order>;
-    updateOrderList: (orderId:string) => void;
-}
+import { useSelector } from "react-redux";
+import { getOrdersList } from "@/store/slices/ordersList/selectors";
 
 
 const OrdersTable = () => {
-  return (
-    <div>OrdersTable</div>
-  )
+    const ordersList = useSelector(getOrdersList);
+    console.log(ordersList)
+    return (
+        <div>OrdersTable</div>
+    )
 }
 
 
