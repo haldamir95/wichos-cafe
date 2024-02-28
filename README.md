@@ -10,6 +10,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
     ```
 5. answers:
     - What is your project named? --> wichos-cafe
+6. Install React-Redux to use useSelector and useDispatch
+    ```
+    yarn add react-redux redux
+    yarn add @reduxjs/toolkit
+
+    ```
+
 
 
 ## Getting Started
