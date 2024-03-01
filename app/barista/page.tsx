@@ -12,8 +12,10 @@ const BaristaPage = () => {
         pubnub.subscribe({ channels: ['whichoosChannel'] });
         pubnub.addListener({
             message: (event:any) => {
-                const newOrder:Order = JSON.parse(event.message.content)
-                orderList.push(newOrder)
+                const newOrder:Order = JSON.parse(event.message.content);
+                if(!orderExist(newOrder.id!)){
+                    orderList.push(newOrder)
+                }
                 console.log(orderList)
             }
         });
@@ -23,6 +25,9 @@ const BaristaPage = () => {
         
     }, [])
     
+    const orderExist = (id:string):boolean => {
+        return orderList.some((order:Order)=>order.id===id)
+    }
 
 	return (
 		<div>

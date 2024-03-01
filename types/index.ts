@@ -5,6 +5,7 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
 };
 
 export type Order = {
+    id?:string,
     drink?: string,
     complement?: string,
     type?: string,

@@ -1,11 +1,11 @@
 'use client'
 import { FC } from "react";
-import { useDispatch } from "react-redux";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider"
 import { Button } from "@nextui-org/button"
 import { Order } from "@/types";
 import pubnub from "../utils/pubnub"
+import {v4} from "uuid"
 
 interface OrderMenuProps {
     newOrder: Order;
@@ -13,7 +13,6 @@ interface OrderMenuProps {
 }
 
 export const OrderMenu: FC<OrderMenuProps> = ({ newOrder, updateOrder }) => {
-    const dispatch = useDispatch();
     const { drink, complement, type, sugar_qty, sugar_type, size, chai, infusion } = newOrder
 
     const deleteOrder = () => {
@@ -28,6 +27,8 @@ export const OrderMenu: FC<OrderMenuProps> = ({ newOrder, updateOrder }) => {
         })
     }
     const setNewOrder = (newOrder: Order) => (event: any) => {
+        newOrder.id = v4();
+        console.log(newOrder)
         pubnub.publish({
             channel: 'whichoosChannel',
             message: { content: JSON.stringify(newOrder) }

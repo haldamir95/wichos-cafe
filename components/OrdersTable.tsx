@@ -7,7 +7,6 @@ import { getOrdersList } from "@/store/slices/ordersList/selectors";
 
 const OrdersTable = () => {
     const ordersList = useSelector(getOrdersList);
-    console.log(ordersList)
     return (
         <div>OrdersTable</div>
     )
