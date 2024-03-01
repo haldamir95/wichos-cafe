@@ -16,6 +16,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
     yarn add @reduxjs/toolkit
 
     ```
+7. Install and configure [PubNub](https://www.pubnub.com/blog/how-to-build-a-next-js-real-time-chat-application/)
+    ```
+    yarn add pubnub pubnub-react
+    ```
+    - configure your .env file (NEXT_PUBLIC_ is mandatory before your variable name)
+    - add your pubnub.js file
 
 
 

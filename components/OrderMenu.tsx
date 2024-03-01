@@ -5,29 +5,33 @@ import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Divider } from "@nextui-org/divider"
 import { Button } from "@nextui-org/button"
 import { Order } from "@/types";
-import { addOrder } from "@/store/slices/ordersList";
+import pubnub from "../utils/pubnub"
 
 interface OrderMenuProps {
     newOrder: Order;
     updateOrder: (updatedOrder: Order) => void;
 }
 
-export const OrderMenu: FC<OrderMenuProps> = ({newOrder, updateOrder}) => {
+export const OrderMenu: FC<OrderMenuProps> = ({ newOrder, updateOrder }) => {
     const dispatch = useDispatch();
-    const {drink, complement, type, sugar_qty, sugar_type, size, chai, infusion} = newOrder
+    const { drink, complement, type, sugar_qty, sugar_type, size, chai, infusion } = newOrder
+
     const deleteOrder = () => {
         updateOrder({
-            drink:'', 
-            complement:'', 
-            type:'', 
-            sugar_qty:'', 
-            sugar_type:'', 
-            size:'',
-            chai:''
+            drink: '',
+            complement: '',
+            type: '',
+            sugar_qty: '',
+            sugar_type: '',
+            size: '',
+            chai: ''
         })
     }
-    const setNewOrder = (newOrder:Order) => (event: any)  => {
-        dispatch(addOrder(newOrder));
+    const setNewOrder = (newOrder: Order) => (event: any) => {
+        pubnub.publish({
+            channel: 'whichoosChannel',
+            message: { content: JSON.stringify(newOrder) }
+          });
         deleteOrder();
     }
 
@@ -42,19 +46,19 @@ export const OrderMenu: FC<OrderMenuProps> = ({newOrder, updateOrder}) => {
             <Divider />
             <CardBody>
                 Orden:
-                {(drink||complement||type) &&
+                {(drink || complement || type) &&
                     <p>
-                        {` ${drink?drink:''} ${chai?chai:''} ${infusion?infusion:''}  ${complement?complement:''} ${type?type:''}`}
+                        {` ${drink ? drink : ''} ${chai ? chai : ''} ${infusion ? infusion : ''}  ${complement ? complement : ''} ${type ? type : ''}`}
                     </p>
                 }
-                {(sugar_qty||sugar_type) &&
+                {(sugar_qty || sugar_type) &&
                     <p>
-                        {` ${sugar_qty?sugar_qty:''} ${sugar_type?sugar_type:''}`}
+                        {` ${sugar_qty ? sugar_qty : ''} ${sugar_type ? sugar_type : ''}`}
                     </p>
                 }
                 {(size) &&
                     <p>
-                        {` ${size?size:''}`}
+                        {` ${size ? size : ''}`}
                     </p>
                 }
             </CardBody>
