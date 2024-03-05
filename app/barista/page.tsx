@@ -23,7 +23,7 @@ const BaristaPage = () => {
             pubnub.unsubscribeAll();
         }
         
-    }, [])
+    },)
     
     const orderExist = (id:string):boolean => {
         return orderList.some((order:Order)=>order.id===id)

@@ -19,9 +19,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 7. Install and configure [PubNub](https://www.pubnub.com/blog/how-to-build-a-next-js-real-time-chat-application/)
     ```
     yarn add pubnub pubnub-react
+    yarn add @types/pubnub@^7.0.0
     ```
     - configure your .env file (NEXT_PUBLIC_ is mandatory before your variable name)
     - add your pubnub.js file
+    - issues when build? [Possible solution](https://github.com/pubnub/javascript/issues/352) change next.config.js
 
 
 
@@ -92,7 +94,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
     ```
 3. run your container
     ```bash
-    docker -d run -p 3000:3000 wichos-cafe
+    docker run -d -p 3000:3000 wichos-cafe
     ```
     NOTAS: -d es para correr el contenedor en 2do plano, quitar el -d para acceder a la consola de la app
 4. check the containers
