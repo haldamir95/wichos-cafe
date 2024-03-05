@@ -16,7 +16,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
     yarn add @reduxjs/toolkit
 
     ```
-7. Install and configure [PubNub](https://www.pubnub.com/blog/how-to-build-a-next-js-real-time-chat-application/)
+7. Install and configure [PubNub](https://www.pubnub.com/blog/how-to-build-a-next-js-real-time-chat-application/) - [Another tuto](https://app.dashcam.io/replay/64ee0d2ca4bc310061f566ca?share=8YQoHC40jdzYpYGpcJhQ)
     ```
     yarn add pubnub pubnub-react
     yarn add @types/pubnub@^7.0.0

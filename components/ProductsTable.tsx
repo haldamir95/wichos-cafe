@@ -39,7 +39,7 @@ export const ProductsTable: FC<ProductsTableProps> = ({ newOrder, updateOrder })
     ];
     const rows: Array<OrderRow> = [
         {
-            key: 1,
+            key: "1",
             drink: 'Cafe',
             complement: 'Negro',
             type: 'Fuerte',
@@ -47,7 +47,7 @@ export const ProductsTable: FC<ProductsTableProps> = ({ newOrder, updateOrder })
             size: "Normal"
         },
         {
-            key: 2,
+            key: "2",
             drink: 'Te',
             complement: 'Cremora',
             type: 'Suave',
@@ -55,7 +55,7 @@ export const ProductsTable: FC<ProductsTableProps> = ({ newOrder, updateOrder })
             size: "Grande"
         },
         {
-            key: 3,
+            key: "3",
             drink: 'Moka',
             complement: 'Vainilla',
             type: 'Normal',
@@ -63,51 +63,51 @@ export const ProductsTable: FC<ProductsTableProps> = ({ newOrder, updateOrder })
             size: "ICE"
         },
         {
-            key: 4,
+            key: "4",
             drink: 'Chocolate',
             complement: 'Expresso',
             sugar: '1',
         },
         {
-            key: 5,
+            key: "5",
             drink: 'Frape',
             complement: 'Leche Entera',
             sugar: '2',
         },
         {
-            key: 6,
+            key: "6",
             drink: 'Infusion',
             complement: 'Leche Deslactosada',
             sugar: '3',
         },
         {
-            key: 7,
+            key: "7",
             drink: 'Americano',
             complement: 'Leche Descremada',
             sugar: '4',
         },
         {
-            key: 8,
+            key: "8",
             drink: 'Capuccino',
             complement: 'Leche Soya',
             sugar: 'No Azucar',
         },
         {
-            key: 9,
+            key: "9",
             drink: 'Gaseosa',
             complement: 'Blanco',
         },
         {
-            key: 10,
+            key: "10",
             drink: 'Chai',
             complement: 'Cookies',
         },
         {
-            key: 11,
+            key: "11",
             drink: 'Latte',
         },
         {
-            key: 12,
+            key: "12",
             drink: 'Matcha',
         },
     ];
@@ -182,7 +182,7 @@ export const ProductsTable: FC<ProductsTableProps> = ({ newOrder, updateOrder })
 
     return (
         <>
-            <Table width={'100px'}>
+            <Table aria-label="Table to create a new order">
                 <TableHeader columns={columns}>
                     {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
                 </TableHeader>

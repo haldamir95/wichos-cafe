@@ -28,7 +28,6 @@ export const OrderMenu: FC<OrderMenuProps> = ({ newOrder, updateOrder }) => {
     }
     const setNewOrder = (newOrder: Order) => (event: any) => {
         newOrder.id = v4();
-        console.log(newOrder)
         pubnub.publish({
             channel: 'whichoosChannel',
             message: { content: JSON.stringify(newOrder) }

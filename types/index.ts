@@ -18,6 +18,6 @@ export type Order = {
 }
 
 export type OrderRow = {
-    key: number,
+    key: string,
     sugar?: string,
 } & Order;
