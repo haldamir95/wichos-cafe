@@ -54,6 +54,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
     ```bash
     docker build -t wichos-cafe .
     ```
+    (-t = --tag -> allows set a name to the image)
     - Solving Problems 
         -   if actions for run 'yarn run build' does not work, remove the 'if - fi' statement and leave just 'yarn run build;
             ```bash
@@ -97,6 +98,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
     docker run -d -p 3000:3000 wichos-cafe
     ```
     NOTAS: -d es para correr el contenedor en 2do plano, quitar el -d para acceder a la consola de la app
+    -p = --port => is for mapp the port of the app with the port of the localhost
 4. check the containers
     ```bash
     docker ps -a

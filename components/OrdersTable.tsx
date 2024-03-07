@@ -8,7 +8,7 @@ import pubnub from "@/utils/pubnub";
 
 
 const OrdersTable = () => {
-    const [ordersList, setOrdersList] = useState<OrderRow[]>([{key:'key1'}])
+    const [ordersList, setOrdersList] = useState<OrderRow[]>([])
     const columns: Array<{ key: string, label: string }> = [
         {
             key: "size",
@@ -39,7 +39,7 @@ const OrdersTable = () => {
             label: "ACCION",
         },
     ];
-    const rows: Array<OrderRow> = [{key:'key1'}]
+    const rows: Array<OrderRow> = []
 
 
     useEffect(() => {
