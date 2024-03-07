@@ -8,7 +8,7 @@ import pubnub from "@/utils/pubnub";
 
 
 const OrdersTable = () => {
-    const [ordersList, setOrdersList] = useState<OrderRow[]>([])
+    const [ordersList, setOrdersList] = useState<OrderRow[]>([{key:'key1'}])
     const columns: Array<{ key: string, label: string }> = [
         {
             key: "size",
@@ -39,7 +39,7 @@ const OrdersTable = () => {
             label: "ACCION",
         },
     ];
-    const rows: Array<OrderRow> = []
+    const rows: Array<OrderRow> = [{key:'key1'}]
 
 
     useEffect(() => {
@@ -75,6 +75,11 @@ const OrdersTable = () => {
         return rows.some((order:OrderRow)=>order.id===id)
     }
 
+    const removeFromList = (id:string) =>{
+        const newOrdersList = rows.filter((order) => order.key != id);
+        setOrdersList(newOrdersList)
+    }
+
     
     return (
         <>
@@ -91,7 +96,7 @@ const OrdersTable = () => {
                             <TableCell className="text-large">{(item.chai || item.infusion) && `${item.chai}${item.infusion}`}</TableCell>
                             <TableCell className="text-large">{item.type}</TableCell>
                             <TableCell className="text-large">{(item.sugar_type || item.sugar_qty) && `${item.sugar_type} ${item.sugar_qty}`}</TableCell>
-                            <TableCell><Button color="success">Entregar</Button></TableCell>
+                            <TableCell><Button color="success" onPress={() => removeFromList(item.key)}>Entregar</Button></TableCell>
                         </TableRow>
                     )}
                 </TableBody>
