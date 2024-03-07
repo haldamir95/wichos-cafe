@@ -1,8 +1,11 @@
+'use client'
+import { useState } from "react";
 import {
     Navbar as NextUINavbar,
     NavbarContent,
     NavbarBrand,
     NavbarItem,
+    NavbarMenuToggle, NavbarMenu, NavbarMenuItem
 } from "@nextui-org/navbar";
 import { link as linkStyles } from "@nextui-org/theme";
 import { Image } from "@nextui-org/image";
@@ -15,11 +18,16 @@ import { ThemeSwitch } from "@/components/theme-switch";
 
 
 export const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
 
     return (
-        <NextUINavbar maxWidth="xl" position="sticky">
+        <NextUINavbar onMenuOpenChange={setIsMenuOpen} maxWidth="xl" position="sticky">
             <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+                <NavbarMenuToggle
+                    aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                    className="sm:hidden"
+                />
                 <NavbarBrand as="li" className="gap-3 max-w-fit">
                     <NextLink className="flex justify-start items-center gap-1" href="/">
                         <Image
@@ -30,7 +38,7 @@ export const Navbar = () => {
                         <p className="font-bold text-inherit">Wichoo&apos;s Cafe</p>
                     </NextLink>
                 </NavbarBrand>
-                <ul className="hidden lg:flex gap-4 justify-start ml-2">
+                <NavbarContent className="hidden sm:flex gap-4" justify="center">
                     {siteConfig.navItems.map((item) => (
                         <NavbarItem key={item.href}>
                             <NextLink
@@ -45,7 +53,7 @@ export const Navbar = () => {
                             </NextLink>
                         </NavbarItem>
                     ))}
-                </ul>
+                </NavbarContent>
             </NavbarContent>
 
             <NavbarContent
@@ -59,7 +67,22 @@ export const Navbar = () => {
 
                 </NavbarItem>
             </NavbarContent>
-
+            <NavbarMenu>
+                {siteConfig.navItems.map((item, index) => (
+                    <NavbarMenuItem key={`${item.label}-${index}`}>
+                        <NextLink
+                            className={clsx(
+                                linkStyles({ color: "foreground" }),
+                                "data-[active=true]:text-primary data-[active=true]:font-medium"
+                            )}
+                            color="foreground"
+                            href={item.href}
+                        >
+                            {item.label}
+                        </NextLink>
+                    </NavbarMenuItem>
+                ))}
+            </NavbarMenu>
         </NextUINavbar>
     );
 };
