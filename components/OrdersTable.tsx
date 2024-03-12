@@ -24,7 +24,7 @@ const OrdersTable = () => {
         },
         {
             key: "chai_infution",
-            label: "CHAI/INFUSION",
+            label: "BEBIDA ESPECIAL",
         },
         {
             key: "type",
