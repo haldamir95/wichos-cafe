@@ -13,8 +13,10 @@ export type Order = {
     sugar_qty?:string,
     size?: string,
 
-    chai?:string,
-    infusion?:string,
+    chaiType?:string,
+    infusionType?:string,
+    frappeType?:string,
+    shakeType?:string
 }
 
 export type OrderRow = {

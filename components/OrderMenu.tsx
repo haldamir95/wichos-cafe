@@ -13,7 +13,7 @@ interface OrderMenuProps {
 }
 
 export const OrderMenu: FC<OrderMenuProps> = ({ newOrder, updateOrder }) => {
-    const { drink, complement, type, sugar_qty, sugar_type, size, chai, infusion } = newOrder
+    const { drink, complement, type, sugar_qty, sugar_type, size, chaiType, infusionType, frappeType, shakeType } = newOrder
 
     const deleteOrder = () => {
         updateOrder({
@@ -23,7 +23,10 @@ export const OrderMenu: FC<OrderMenuProps> = ({ newOrder, updateOrder }) => {
             sugar_qty: '',
             sugar_type: '',
             size: '',
-            chai: ''
+            chaiType: '',
+            infusionType:'',
+            frappeType:'',
+            shakeType:''
         })
     }
     const setNewOrder = (newOrder: Order) => (event: any) => {
@@ -48,7 +51,7 @@ export const OrderMenu: FC<OrderMenuProps> = ({ newOrder, updateOrder }) => {
                 Orden:
                 {(drink || complement || type) &&
                     <p>
-                        {` ${drink ? drink : ''} ${chai ? chai : ''} ${infusion ? infusion : ''}  ${complement ? complement : ''} ${type ? type : ''}`}
+                        {` ${drink ? drink : ''} ${chaiType ? chaiType : ''} ${infusionType ? infusionType : ''} ${frappeType ? frappeType : ''} ${shakeType ? shakeType : ''} ${complement ? complement : ''} ${type ? type : ''}`}
                     </p>
                 }
                 {(sugar_qty || sugar_type) &&
