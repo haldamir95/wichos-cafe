@@ -57,8 +57,10 @@ const OrdersTable = () => {
                         type: newOrder.type,
                         sugar_type: newOrder.sugar_type,
                         sugar_qty: newOrder.sugar_qty,
-                        chai: newOrder.chai,
-                        infusion: newOrder.infusion
+                        chaiType: newOrder.chaiType,
+                        infusionType: newOrder.infusionType,
+                        frappeType: newOrder.frappeType,
+                        shakeType: newOrder.shakeType
                     }
                     rows.push(orderRow)
                     setOrdersList([...ordersList, orderRow]);
@@ -96,7 +98,7 @@ const OrdersTable = () => {
                         <TableCell className="text-large">{item.size}</TableCell>
                         <TableCell className="text-large">{item.drink}</TableCell>
                         <TableCell className="text-large">{item.complement}</TableCell>
-                        <TableCell className="text-large">{(item.chai || item.infusion) && `${item.chai}${item.infusion}`}</TableCell>
+                        <TableCell className="text-large">{(item.chaiType || item.infusionType || item.frappeType || item.shakeType) && `${item.chaiType}${item.infusionType}${item.frappeType}${item.shakeType}`}</TableCell>
                         <TableCell className="text-large">{item.type}</TableCell>
                         <TableCell className="text-large">{(item.sugar_type || item.sugar_qty) && `${item.sugar_type} ${item.sugar_qty}`}</TableCell>
                         <TableCell><Button color="success" onPress={removeFromList(item.key)}>Entregar</Button></TableCell>
